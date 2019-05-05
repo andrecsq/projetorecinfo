@@ -31,7 +31,7 @@ public class Lucene {
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         
         ArrayList<Doc> documentos = 
-        		SGMLtoObject.toDoc("C:\\Users\\André\\eclipse-workspace\\LuceneDemo\\src\\colecao_teste");
+        		SGMLtoObject.toDoc("C:\\dev\\colecao_teste");
         // TEM QUE MODIFICAR ISSO AQUI PRO PATH DA SUA COLECAO
      
         IndexWriter w = new IndexWriter(index, config);

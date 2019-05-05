@@ -53,14 +53,12 @@ public class SGMLtoObject {
 
 				// Do something with child
 			}
-
+/*
 			for (Doc d1 : docs) {
-				if (d1.getId().equals("FSP950810-094")){
-					System.out.println(d1.getId());
-					System.out.println(d1.getText());
-					System.out.println();
-				}
-			}
+				System.out.println(d1.getId());
+				System.out.println(d1.getText());
+				System.out.println();
+			}*/
 
 		} else {
 			System.out.println("deu ruim time");
