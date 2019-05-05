@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.lucene.analysis.pt.PortugueseAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -23,7 +24,8 @@ public class Lucene {
     public static void main(String[] args) throws IOException, ParseException {
         // 0. Specify the analyzer for tokenizing text.
         //    The same analyzer should be used for indexing and searching
-        StandardAnalyzer analyzer = new StandardAnalyzer();
+    	PortugueseAnalyzer analyzer = new PortugueseAnalyzer();
+        //StandardAnalyzer analyzer = new StandardAnalyzer();
 
         // 1. create the index
         Directory index = new RAMDirectory();
@@ -50,7 +52,7 @@ public class Lucene {
         Query q = new QueryParser("title", analyzer).parse(querystr);
 
         // 3. search
-        int hitsPerPage = 10;
+        int hitsPerPage = 100;
         IndexReader reader = DirectoryReader.open(index);
         IndexSearcher searcher = new IndexSearcher(reader);
         TopDocs docs = searcher.search(q, hitsPerPage);
@@ -61,7 +63,8 @@ public class Lucene {
         for(int i=0;i<hits.length;++i) {
             int docId = hits[i].doc;
             Document d = searcher.doc(docId);
-            System.out.println((i + 1) + ". " + d.get("isbn") + "\t" + d.get("title"));
+            System.out.println((i) + ". " + d.get("isbn") + " " + hits[i].score);
+            //  + " " + "\t" + d.get("title")
         }
 
         // reader can only be closed when there
